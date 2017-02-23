@@ -5,6 +5,7 @@ import com.springboot.gamereco.domain.Customer;
 import com.springboot.gamereco.domain.Recommendation;
 import com.springboot.gamereco.exception.InActiveRecommendationException;
 import com.springboot.gamereco.service.CustomerService;
+import com.springboot.gamereco.web.controller.model.CustomerModel;
 import com.springboot.gamereco.web.controller.model.RecommendationModel;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -70,6 +71,22 @@ public class CustomerController {
         return ResponseEntity.ok("");
     }
 
+    @RequestMapping(value="/customers", method= RequestMethod.GET, produces = "application/json; charset=UTF-8")
+    public ResponseEntity getCustomers(){
+        List<CustomerModel> customerModels = new ArrayList<CustomerModel>();
+        try {
+            // Get all customers.
+            List<Customer> customers = customerService.getAllCustomers();
+            // Converts the customers into UI models.
+            customerModels = convertToCustomerModels(customers);
+        }catch(Exception exception){
+            // Throw exception
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error while retrieving all Customers.");
+        }
+        // Returns customers
+        return ResponseEntity.ok(customerModels);
+    }
+
     /**
      * Method takes multipartFile as input and parse it as a CSV file.
      * Returns the list of customer instances found in csv file populated with recommendations details.
@@ -119,6 +136,24 @@ public class CustomerController {
             throw new IOException("Error while parsing CSV file." + iOException);
         }
         return customers;
+    }
+
+    /**
+     * Method converts the Customer pojos to ui model
+     * @param customers
+     * @return
+     */
+    private List<CustomerModel>  convertToCustomerModels(List<Customer> customers){
+        List<CustomerModel> customerModels = new ArrayList<CustomerModel>();
+        if(customers != null && !customers.isEmpty()){
+            for (Customer customer : customers){
+                CustomerModel customerModel = new CustomerModel();
+                customerModel.setCustomerNumber(customer.getCustomerNumber());
+                customerModel.setRecommendationActive(customer.isRecommendationActive());
+                customerModels.add(customerModel);
+            }
+        }
+        return customerModels;
     }
 
     /**

@@ -9,6 +9,9 @@ angular.module('myApp.gameCenter', ['ngRoute'])
   });
 }])
 
-.controller('GameCenterCtrl', [function() {
+.controller('GameCenterCtrl', ['$scope', function($scope) {
 
+  $scope.showRecommendations = function(){
+    $('#recommendationModal').modal({});
+  };
 }]);

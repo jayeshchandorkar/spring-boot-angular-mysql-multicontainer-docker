@@ -3,14 +3,19 @@ package com.springboot.gamereco.repository;
 import com.springboot.gamereco.domain.Customer;
 import org.springframework.data.repository.Repository;
 
+import java.util.List;
+
 /**
  * Customer Repository to perform CRUD on Customer resource.
  */
 @org.springframework.stereotype.Repository
 public interface CustomerRepository extends Repository<Customer, Long> {
 
-    // Returns the customer by customerNumber;
+    // Returns the customer by customerNumber
     Customer findOne(Long id);
+
+    // Returns all customers
+    List<Customer> findAll();
 
     // Stores customer
     Customer save(Customer customer);

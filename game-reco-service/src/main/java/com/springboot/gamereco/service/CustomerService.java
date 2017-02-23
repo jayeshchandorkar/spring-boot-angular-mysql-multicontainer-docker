@@ -8,6 +8,8 @@ import com.springboot.gamereco.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -78,6 +80,22 @@ public class CustomerService {
             }
         }
         return null;
+    }
+
+    /**
+     * Returns all customers from the system.
+     *
+     * @return
+     *      List os customer instances, empty list if no customer found.
+     */
+    public List<Customer> getAllCustomers() {
+        List<Customer> customers = customerRepository.findAll();
+        if(customers != null){
+            // Returns customer list.
+            return customers;
+        }
+        // Returns empty list
+        return Collections.emptyList();
     }
 
 }
