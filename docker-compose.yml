@@ -1,0 +1,24 @@
+version: '3.0'
+services:
+    game-reco-mysql:
+        image: mysql:latest
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=game_reco
+            - MYSQL_USER=dbuser
+            - MYSQL_PASSWORD=dbpwd
+        ports:
+            - 3306:3306
+    game-reco-service:
+        build: ./game-reco-service
+        links:
+            - game-reco-mysql:mysql
+        ports:
+            - 8080:8080
+    game-reco-ui:
+        build: ./game-reco-ui
+        links:
+            - game-reco-service
+        ports:
+            - 3000:3000
+            - 3001:3001
