@@ -32,3 +32,11 @@ REST Endpoints
 
 GET http://localhost:8080/customers/11111/games/recommendations?count=5
 POST http://localhost:8080/customers/11111/games/recommendations    multipart
+
+NOTE:
+- docker-compose.yml file from parent directory can be used to run the service in Docker.
+  Run following command from parent directory. The docker-compose will take care of mysql installation as well.
+  
+  ```
+  $ docker-compose up
+  ```
