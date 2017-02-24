@@ -34,7 +34,9 @@ $ java -jar build/libs/game-reco-service.jar
 
 GET http://localhost:8080/customers/11111/games/recommendations?count=5
 
-POST http://localhost:8080/customers/11111/games/recommendations    multipart
+POST http://localhost:8080/customers/11111/games/recommendations
+
+GET http://localhost:8080/customers
 
 
 
