@@ -10,8 +10,6 @@ The application has two tabs.
 - Node.js
 - npm 
 
-You can get them from [here][node].
-
 
 ### Install Dependencies
 
