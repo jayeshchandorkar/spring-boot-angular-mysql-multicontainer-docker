@@ -35,3 +35,8 @@ Access application using following URL
 ```
 http://localhost:8000
 ```
+The game-reco-ui application has two tabs
+- Administration - To upload csv file containing recommendations for the cstomers.
+- Game Center - To view recommendations for the customer.
+
+
