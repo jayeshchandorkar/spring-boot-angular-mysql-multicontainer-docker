@@ -1,10 +1,12 @@
 ##Customer Microservice - Spring boot application
 
-Prerequisite:
+# Prerequisite:
 
 - JDK 1.8 
 - Mysql 5.7
 
+
+# DB
 Create schema and update following values to connect to the database.
 [Check for more info](src/main/resources/application.yml)
 
@@ -16,34 +18,27 @@ Create schema and update following values to connect to the database.
 ```
 
 
-To build
+# Build
 
 ```
 $ gradlew build
 ```
 
-To Run
+# Run
 
 ```
 $ java -jar build/libs/game-reco-service.jar
 ```
 
-REST Endpoints
+# REST Endpoints
 
 GET http://localhost:8080/customers/11111/games/recommendations?count=5
 
 POST http://localhost:8080/customers/11111/games/recommendations    multipart
 
-NOTE:
-- docker-compose.yml file from parent directory can be used to run the service in Docker.
-  Run following command from parent directory. The docker-compose will take care of mysql installation as well.
-  
-  ```
-  $ docker-compose up
-  ```
 
 
-Unit tests
+# Unit tests
 Run following command from parent directory
 
  ```
@@ -51,10 +46,17 @@ Run following command from parent directory
  ```
 
 
-Integration tests
+# Integration tests
 Run following command from parent directory
 
  ```
   $ gradlew integrationTest
  ```
 
+# NOTE:
+- docker-compose.yml file from parent directory can be used to run the service in Docker.
+  Run following command from parent directory. The docker-compose will take care of mysql installation as well.
+  
+  ```
+  $ docker-compose up
+  ```
