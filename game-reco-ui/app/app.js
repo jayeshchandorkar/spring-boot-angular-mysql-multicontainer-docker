@@ -10,5 +10,13 @@ angular.module('myApp', [
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/gamecenter'});
+  $routeProvider.otherwise({redirectTo: '/admin'});
 }]);
+
+var showLoader = function(){
+  $('.loader').show();
+}
+
+var hideLoader = function(){
+  $('.loader').hide();
+}

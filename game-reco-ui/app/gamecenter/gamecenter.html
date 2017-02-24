@@ -1,5 +1,6 @@
 <div class="page-header">
   <h1>Game Center</h1>
+  <div class="loader"></div>
 </div>
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -7,15 +8,16 @@
   </div>
   <div class="panel-body">
     <div class="view-panel">
+        <div ng-show="error" class="alert alert-danger" role="alert">{{errorMsg}}</div>
         <form>
             <div class="form-group">
                 <label for="inputCustomerNumber">Customer Number</label>
-                <input type="text" class="form-control" id="inputCustomerNumber" aria-describedby="customerNumberHelp" placeholder="Enter Customer Number">
+                <input type="text" class="form-control" id="inputCustomerNumber" ng-model="customerNumber" aria-describedby="customerNumberHelp" placeholder="Enter Customer Number">
                 <small id="customerNumberHelp" class="form-text text-muted">Enter valid Customer number to view recommendations, or use invalid customer number to view error message .</small>
             </div>
             <div class="form-group">
                 <label for="inputCountReco">Count</label>
-                <input type="text" class="form-control" id="inputCountReco" aria-describedby="countHelp" placeholder="Enter Count">
+                <input type="text" class="form-control" id="inputCountReco" ng-model="count" aria-describedby="countHelp" placeholder="Enter Count">
                 <small id="countHelp" class="form-text text-muted">Enter number of recommendations to view .</small>
             </div>
             <button class="btn btn-primary" ng-click="showRecommendations()">Submit</button>

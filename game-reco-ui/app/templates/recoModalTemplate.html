@@ -7,29 +7,17 @@
                 </div>
                 <div class="modal-body">
 
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="2000">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="{{$index}}" ng-class="{active: ($index==0)}" ng-repeat="slide in slides"></li>
                     </ol>
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
-                        <div class="item active reco-item">
+                        <div class="item reco-item" ng-class="{active: ($index==0)}" ng-repeat="slide in slides">
                             <div class="carousel-caption">
-                                1
-                            </div>
-                        </div>
-                        <div class="item reco-item">
-                            <div class="carousel-caption">
-                                2
-                            </div>
-                        </div>
-                        <div class="item reco-item">
-                            <div class="carousel-caption">
-                                3
+                                {{slide.productName}}
                             </div>
                         </div>
                     </div>
