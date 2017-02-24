@@ -5,13 +5,14 @@ import com.springboot.gamereco.domain.Customer;
 import com.springboot.gamereco.domain.Recommendation;
 import com.springboot.gamereco.exception.InActiveRecommendationException;
 import com.springboot.gamereco.service.CustomerService;
-import com.springboot.gamereco.web.controller.model.CustomerModel;
-import com.springboot.gamereco.web.controller.model.RecommendationModel;
+import com.springboot.gamereco.web.model.CustomerModel;
+import com.springboot.gamereco.web.model.RecommendationModel;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
+    @CrossOrigin
     @RequestMapping(value="/customers/{customerNumber}/games/recommendations", method= RequestMethod.GET, produces = "application/json; charset=UTF-8")
     public ResponseEntity getGameRecommendationForCustomer(@PathVariable("customerNumber") long customerNumber, @RequestParam(value="count", required=false) Integer count){
         List<RecommendationModel> recommendationModels = new ArrayList<RecommendationModel>();
@@ -39,15 +41,16 @@ public class CustomerController {
         }catch(Exception exception){
             // Check for customer not found and recommendation inactive exception
             if(exception instanceof CustomerNotfoundException){
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer Not Found.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).contentType(MediaType.TEXT_PLAIN).body("Customer Not Found.");
             }else if (exception instanceof InActiveRecommendationException){
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Recommendations not activated for Customer.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).contentType(MediaType.TEXT_PLAIN).body("Recommendations not activated for Customer.");
             }
         }
         // Returns recommendations
         return ResponseEntity.ok(recommendationModels);
     }
 
+    @CrossOrigin
     @RequestMapping(value="/customers/{customerNumber}/games/recommendations", method=RequestMethod.POST)
     public ResponseEntity  handleRecommendationUpload(@PathVariable("customerNumber") long customerNumber, @RequestParam("file") MultipartFile multipartFile){
 
@@ -71,6 +74,7 @@ public class CustomerController {
         return ResponseEntity.ok("");
     }
 
+    @CrossOrigin
     @RequestMapping(value="/customers", method= RequestMethod.GET, produces = "application/json; charset=UTF-8")
     public ResponseEntity getCustomers(){
         List<CustomerModel> customerModels = new ArrayList<CustomerModel>();

@@ -1,4 +1,4 @@
-package com.springboot.gamereco.web.controller.model;
+package com.springboot.gamereco.web.model;
 
 /**
  * Model for Customer
