@@ -22,6 +22,8 @@ $ gradlew clean build
 $ docker-compose up
 ```
 
+NOTE: To run without docker container follow [steps](game-reco-service/README.md) in game-reco-service project.
+
 #### 3) Build and run game-reco-ui application
 
 ```
