@@ -41,3 +41,20 @@ NOTE:
   ```
   $ docker-compose up
   ```
+
+
+Unit tests
+Run following command from parent directory
+
+ ```
+  $ gradlew test
+ ```
+
+
+Integration tests
+Run following command from parent directory
+
+ ```
+  $ gradlew integrationTest
+ ```
+
