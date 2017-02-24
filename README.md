@@ -1,4 +1,4 @@
-# spring-boot-angular2-mysql-multicontainer-docker
+# spring-boot-angular-mysql-multicontainer-docker
 The multi-module application using Spring boot, Angular, Mysql and Docker.
 
 The application structure is as follows.
