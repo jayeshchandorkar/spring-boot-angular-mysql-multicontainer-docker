@@ -4,14 +4,12 @@ The application has two tabs.
 - Administration - To upload Game recommendations for the customers
 - Game Center - To show layer of game recommendations to customer 
 
-## Getting Started
-
-To get you started you can simply clone the `angular-seed` repository and install the dependencies:
 
 ### Prerequisites
 
 - Node.js
 - npm 
+
 You can get them from [here][node].
 
 
