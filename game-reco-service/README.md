@@ -39,7 +39,6 @@ POST http://localhost:8080/customers/11111/games/recommendations    multipart
 
 
 ### Unit tests
-Run following command from parent directory
 
  ```
   $ gradlew test
@@ -47,7 +46,6 @@ Run following command from parent directory
 
 
 ### Integration tests
-Run following command from parent directory
 
  ```
   $ gradlew integrationTest
