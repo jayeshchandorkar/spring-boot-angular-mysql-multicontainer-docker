@@ -71,6 +71,7 @@ public class ApplicationIT {
     @After
     public void cleanUp() throws Exception {
         customerRepository.delete(123);
+        customerRepository.delete(321);
     }
 
     @Test
